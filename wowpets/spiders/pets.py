@@ -22,7 +22,7 @@ class PetsSpider(scrapy.Spider):
 
     def parse_undermine(self, response):
         print('Parsing Undermine')
-        obj = json.loads(response.body)['results'][0]['data']
+        obj = json.loads(bytes(response.body).decode("utf-8"))['results'][0]['data']
         filtered = []
         for x in obj:
             for y in obj[x]:
